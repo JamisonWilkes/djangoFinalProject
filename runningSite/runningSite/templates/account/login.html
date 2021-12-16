@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+<!-- {% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %} -->
+
+{% block content %}
+
+<!-- <h1>{% trans "Sign In" %}</h1>
+
+{% get_providers as socialaccount_providers %}
+
+{% if socialaccount_providers %}
+<p>{% blocktrans with site.name as site_name %}Please sign in with one
+of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+
+<div class="socialaccount_ballot">
+
+  <ul class="socialaccount_providers">
+    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+  </ul>
+
+  <div class="login-or">{% trans 'or' %}</div>
+
+</div>
+
+{% include "socialaccount/snippets/login_extra.html" %}
+
+{% else %}
+<p>{% blocktrans %}If you have not created an account yet, then please
+<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+{% endif %} -->
+
+<!-- <form class="login" method="POST" action="{% url 'account_login' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+</form> -->
+
+<div class="relative bg-local bg-cover bg-center h-screen flex justify-center items-center"
+    style="background-image: url(../../../media/original_images/pineRunning.jpg)">
+    <form class="login w-full max-w-xs bg-white flex flex-col py-5 px-8 rounded-lg shadow-lg" method="POST" action="/login/" >
+        {% csrf_token %}
+        <p><label for="id_login" class="text-gray-700 font-bold py-2">Login:</label> <input class ="text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3" type="text" name="login" autocomplete="email" required="" id="id_login" ></p>
+        <p><label for="id_password" class="text-gray-700 font-bold py-2">Password:</label> <input class="text-gray-700 shadow border rounded border-gray-300 mb-3 py-1 px-3 focus:outline-none focus:shadow-outline" type="password" name="password"  autocomplete="current-password" required="" id="id_password" ></p>
+        
+        <div class="flex justyify-between items-center my-4">
+            <a class="button secondaryAction text-blue-600 hover:text-blue-800 font-bold" href="/password/reset/">Forgot Password? &nbsp;</a>
+            <button class="primaryAction bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4" type="submit"> Sign In</button>
+        </div>
+        <!-- <div class="flex justyify-between items-center my-4">
+            <p class="button secondaryAction text-blue-600 hover:text-blue-800 font-bold" >No Account? &nbsp;</p>
+            <button class="bg-green-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4" ><a href="/signup">Sign Up</a></button>
+        </div> -->
+    </form>
+</div>
+
+  {% endblock %}

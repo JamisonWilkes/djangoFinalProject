@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+
+{% block content %}
+
+<div class="relative bg-local bg-cover bg-center h-screen"
+  style="background-image: url(media/original_images/mountainRunning.jpg)">
+
+  <div
+    class="justify-center max-w-2xl mx-auto py-8 px-4 sm:py-8 sm:px-6 lg:px-8">
+    <h1 class="absolute bottom-80 inset-x-0 text-center text-6xl font-normal tracking-tight text-white">
+      The Running Shop</h1>
+    {% if request.path == '/' %}
+    <div class="absolute bottom-60 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <a href="/shop">
+        <button class="bg-white hover:bg-gray-200 text-black font-bold py-2 px-4 rounded">
+          Shop Now
+        </button>
+      </a>
+    </div>
+    {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
